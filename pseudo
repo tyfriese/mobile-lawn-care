@@ -1,1 +1,19 @@
-# Pseudo code for Mobile Lawn Care:
+# call comes in
+# utilize APPLE CALENDAR
+# enter customers info
+# set a 2 hour window on a day we know we will be in the area.
+# "i tell the customer ill call them or text a day before to give them their 2 hour window."
+# enter notes the customer gives (tune-up, check list, what the problem is[mower doesnt start, etc...])
+# customer email/phone into the notes section
+
+# uses app called Circuit to route the stops by most efficient 
+#  wants, when someone calls, they enter the address and it tells them the next available day they're in the area
+# based off of zip code but also be able to override this.
+# Puts repair stops in order off the route based from Circuit app. 
+# manually texts each customer their two hour window
+# "call-ahead" "text-ahead" goes into notes section next to their name so the tech knows to do this when needed
+# wants the app to allow the tech to put "en route to next one"(job?) and then customer gets automated text
+
+#Evan uses an apple iphone, Liam uses an android currently. So he prints his route via APPLE CALENDAR daily
+
+# wants app to be uniform to everyone and on their phones, regardless of what phone they use.
