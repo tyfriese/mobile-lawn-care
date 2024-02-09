@@ -1,3 +1,4 @@
+# Pseudo code for Mobile Lawn Care:
 # call comes in
 # utilize APPLE CALENDAR
 # enter customers info
@@ -5,7 +6,6 @@
 # "i tell the customer ill call them or text a day before to give them their 2 hour window."
 # enter notes the customer gives (tune-up, check list, what the problem is[mower doesnt start, etc...])
 # customer email/phone into the notes section
-
 # uses app called Circuit to route the stops by most efficient 
 #  wants, when someone calls, they enter the address and it tells them the next available day they're in the area
 # based off of zip code but also be able to override this.
@@ -13,7 +13,253 @@
 # manually texts each customer their two hour window
 # "call-ahead" "text-ahead" goes into notes section next to their name so the tech knows to do this when needed
 # wants the app to allow the tech to put "en route to next one"(job?) and then customer gets automated text
-
-#Evan uses an apple iphone, Liam uses an android currently. So he prints his route via APPLE CALENDAR daily
-
+# Evan uses an apple iphone, Liam uses an android currently. So he prints his route via APPLE CALENDAR daily
 # wants app to be uniform to everyone and on their phones, regardless of what phone they use.
+
+
+
+
+
+
+
+
+
+# incoming calls handles customers info
+# Uses apple calendar to find a date they are in the area next, and schedules a 2-hour window
+# notifies customer about appointment.
+    # provides them a 2 hour window 
+    # collects additional notes (customer checklist)
+# Use Circuit app to optimize route.
+    # determines repair stops as well as customer stops
+# Notify customer of their 2-hour window alotment 
+    # checks on a "call-ahead" or "text-ahead"
+# Lets techs have the ability to mark "en route to next stop"
+    # sends a text or call to customer when the tech is "en route to next stop"
+# make sure it is accessible on any kind of phone
+# Daily route printing (goes along with device uniformity)
+# Process:
+    # handles flow from incoming calls, to scheduling, to communication, to route optimiziation.
+
+
+
+
+
+
+
+
+
+
+# Function to handle incoming call
+function handleIncomingCall(customerInfo):
+    # Utilize Apple Calendar to schedule the appointment
+    appointmentDate = findAvailableDate(customerInfo) 
+    
+    # Set a 2-hour window on the scheduled day
+    setAppointmentWindow(appointmentDate, customerInfo)
+    
+    # Inform the customer about the appointment window
+    notifyCustomer(appointmentDate, customerInfo)
+    
+    # Enter customer's notes (tune-up, check list, etc.) into the system
+    enterCustomerNotes(customerInfo)
+
+    # Use Circuit app to optimize route and schedule stops
+    optimizedRoute = optimizeRoute(customerInfo)
+
+    # Iterate through the stops in the optimized route
+    for stop in optimizedRoute:
+        # Manually text each customer their two-hour window
+        notifyCustomerTwoHourWindow(stop)
+
+        # Check if "call-ahead" or "text-ahead" is needed and add to notes
+        checkAndAddCallOrTextAhead(stop)
+
+        # Mark as "en route to next one" and send automated text to customer
+        markEnRouteAndNotifyCustomer(stop)
+
+# Function to find the next available date in the area
+function findAvailableDate(customerInfo):
+    # Logic to find the next available date based on zip code or override
+    # Use Apple Calendar to check availability and return the date
+    # ...
+
+# Function to set a 2-hour window on a given day
+function setAppointmentWindow(appointmentDate, customerInfo):
+    # Set the appointment window using Apple Calendar
+    # ...
+
+# Function to notify the customer about the appointment window
+function notifyCustomer(appointmentDate, customerInfo):
+    # Notify the customer via call or text about the 2-hour window
+    # ...
+
+# Function to enter customer's notes into the system
+function enterCustomerNotes(customerInfo):
+    # Enter the customer's notes into the system (e.g., database)
+    # ...
+
+# Function to optimize route using the Circuit app
+function optimizeRoute(customerInfo):
+    # Use Circuit app to optimize the route based on the stops
+    # ...
+
+# Function to notify each customer about their two-hour window
+function notifyCustomerTwoHourWindow(stop):
+    # Notify each customer in the route about their 2-hour window
+    # ...
+
+# Function to check and add "call-ahead" or "text-ahead" to notes
+function checkAndAddCallOrTextAhead(stop):
+    # Check if "call-ahead" or "text-ahead" is needed and add to customer notes
+    # ...
+
+# Function to mark as "en route to next one" and send automated text
+function markEnRouteAndNotifyCustomer(stop):
+    # Mark the technician as "en route to the next stop" and send automated text to customer
+    # ...
+
+# Main function to handle the entire process for an incoming call
+function main():
+    # Get customer information from the incoming call
+    customerInfo = getCustomerInfoFromCall()
+
+    # Handle the incoming call and schedule the appointment
+    handleIncomingCall(customerInfo)
+
+# Call the main function to start the process
+main()
+
+
+
+
+
+
+
+# query list:
+
+# findAvailableDate - finding available dates they are in the area next (apple calendar) 
+# getAppointmentWindow -  finding a 2-hour "appointment window"
+# optimizeRoute - tech's route to customers and repair shops 
+# confirmAhead - text or call ahead details need to be checked
+
+
+# action list:
+
+# scheduleAppointment - with info from customer (customer info, appt date, 2-hour window)
+# enterCustomerNotes - customer details and checklist
+# customerAppointmentDate - notify customer of their appt date
+# findBestRoute - repair stops, any necesarry stops with Circuit app
+# twoHourWindow - notify customer of their exact time frame
+# markEnRoute - allows tech's to "mark en route" to repair stop, to customer.
+# notifyEnRoute - sends customer text/call about "en route"
+# printDailyRoute - prints route for any kind of phone user
+
+
+
+
+
+
+
+
+
+
+
+
+# module MobileLawnCare {
+
+#  // Queries
+
+#  query findAvailableDate(customerInfo: CustomerInfo): Date {
+#    // Implementation details to find the next available date based on customerInfo
+#    // Use external systems like Apple Calendar
+#  }
+
+#  query getAppointmentWindow(appointmentDate: Date, customerInfo: CustomerInfo): TimeWindow {
+#   // Implementation details to get a 2-hour window on the scheduled day for the customer
+# }
+
+#  query getCustomerNotes(customerInfo: CustomerInfo): CustomerNotes {
+#     // Implementation details to retrieve notes provided by the customer
+#   }
+
+#   query optimizeRoute(repairStops: List<RepairStop>, customerInfo: CustomerInfo): OptimizedRoute {
+# // Implementation details to optimize the technician's route using the Circuit app
+#   }
+
+# #   query checkCallOrTextAhead(stop: RepairStop): CommunicationMethod {
+#     // Implementation details to check whether a call or text ahead is needed for a specific customer
+#   }
+
+
+#   // Actions
+
+#   action scheduleAppointment(customerInfo: CustomerInfo, appointmentDate: Date, window: TimeWindow): Unit {
+#     // Implementation details to schedule the appointment using Apple Calendar
+#   }
+
+#   action customerAppointmentDate(customerInfo: CustomerInfo, appointmentDate: Date, window: TimeWindow): Unit {
+#     // Implementation details to inform the customer about the scheduled appointment through call or text
+#   }
+
+#   action enterCustomerInfoAndNotes(customerInfo: CustomerInfo, notes: CustomerNotes): Unit {
+#     // Implementation details to enter customer information and notes into the system (e.g., database)
+#   }
+
+#   action routeOptimization(repairStops: List<RepairStop>): OptimizedRoute {
+#     // Implementation details to utilize the Circuit app for optimizing the technician's route
+#   }
+
+#   action notifyTwoHourWindow(stop: RepairStop): Unit {
+#     // Implementation details to manually notify each customer of their two-hour service window
+#   }
+
+#   action markEnRoute(stop: RepairStop): Unit {
+#     // Implementation details to allow technicians to mark themselves as "en route to the next stop"
+#   }
+
+#   action automatedCustomerText(stop: RepairStop): Unit {
+#     // Implementation details to send an automated text to the customer when the technician is en route to the next appointment
+#   }
+
+#   action printDailyRoute(technicianInfo: TechnicianInfo): Unit {
+#     // Implementation details to print the daily route for Liam (Android user) via Apple Calendar
+#   }
+
+#   action configureDefaultPullBehavior(pullPreference: PullPreference): Unit {
+#     // Implementation details to set the default pull behavior for the repository
+#   }
+
+#   // Data types
+
+#   type Date = {
+#     // Definition of Date type
+#   }
+
+#   type TimeWindow = {
+#     // Definition of TimeWindow type
+#   }
+
+#   type CustomerInfo = {
+#     // Definition of CustomerInfo type
+#   }
+
+#   type CustomerNotes = {
+#     // Definition of CustomerNotes type
+#   }
+
+#   type RepairStop = {
+#     // Definition of RepairStop type
+#   }
+
+#   type OptimizedRoute = {
+#     // Definition of OptimizedRoute type
+#   }
+
+#   type TechnicianInfo = {
+#     // Definition of TechnicianInfo type
+#   }
+
+#   type PullPreference = {
+#     // Definition of PullPreference type
+#   }
+# }
